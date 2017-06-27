@@ -51,7 +51,7 @@ mkresidCorr <- function(filenames,sites) {
       mutate(resids=getresid_sitevisit(site,value))
   
   # reshape per subject (i)
-  d.reshape <- withresid %>%group_by(i) %>% do(dcast(.,Var1~Var2)) 
+  d.reshape <- withresid %>%group_by(i) %>% do(dcast(.,Var1~Var2,value.var='resids')) 
 
   # nest that per subject
   d.nest <- d.reshape %>% nest 
